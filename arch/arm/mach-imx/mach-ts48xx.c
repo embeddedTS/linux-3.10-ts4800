@@ -158,6 +158,13 @@ static iomux_v3_cfg_t mx51ts48xx_pads[] = {
 	MX51_PAD_AUD3_BB_RXD__AUD3_RXD,
 	MX51_PAD_AUD3_BB_CK__AUD3_TXC,
 	MX51_PAD_AUD3_BB_FS__AUD3_TXFS,
+	
+	/* LCD Backlight */
+	MX51_PAD_GPIO1_2__PWM1_PWMO,
+	
+	/* LCD 3.3V Enable */
+	MX51_PAD_CSI2_D12__GPIO4_9,
+		
 };
 
 /* Serial ports */
@@ -334,16 +341,6 @@ void __init ts48xx_common_init(void)
 					 ARRAY_SIZE(mx51ts48xx_pads));
 }
 
-static void ts48xx_fixup(struct tag *tags, char **from, struct meminfo *meminfo)
-{
-	struct tag *t;
-	for_each_tag(t, tags) {
-		if (t->hdr.tag == ATAG_MEM) {
-			t->u.mem.size = SZ_256M;
-			break;
-		}
-	}
-}
 
 /*
  * Board specific initialization.
@@ -393,6 +390,11 @@ static void __init ts48xx_timer_init(void)
 	mx51_clocks_init(32768, 24000000, 22579200, 24576000);
 }
 
+static const char *ts48xx_dt_board_compat[] __initdata = {
+	"technologicsystems,imx51-ts48xx",
+	NULL
+};
+
 MACHINE_START(TS48XX, "Technologic Systems TS48XX")
 	.atag_offset = 0x100,
 	.map_io = mx51_map_io,
@@ -402,6 +404,6 @@ MACHINE_START(TS48XX, "Technologic Systems TS48XX")
 	.init_time	= ts48xx_timer_init,
 	.init_machine = ts48xx_init,
 	.init_late	= imx51_init_late,
-	.fixup = ts48xx_fixup,
 	.restart	= mxc_restart,
+	.dt_compat	= ts48xx_dt_board_compat,
 MACHINE_END
