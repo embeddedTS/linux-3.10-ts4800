@@ -742,7 +742,7 @@ config MACH_MX51_BABBAGE
 	  peripherals.
 
 config MACH_TS48XX
-	bool "Support Technologic Systems TS4800 series"
+	bool "Support embeddedTS TS4800 series"
 	select IMX_HAVE_PLATFORM_FSL_USB2_UDC
 	select IMX_HAVE_PLATFORM_IMX2_WDT
 	select IMX_HAVE_PLATFORM_IMX_I2C

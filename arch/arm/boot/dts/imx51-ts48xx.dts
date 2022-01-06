@@ -14,8 +14,8 @@
 #include "imx51.dtsi"
 
 / {
-	model = "Technologic Systems TS48XX";
-	compatible = "technologicsystems,imx51-ts48xx";
+	model = "embeddedTS TS48XX";
+	compatible = "embeddedts,imx51-ts48xx";
 
 	chosen {
 		bootargs = "root=/dev/ram0 rw init=/linuxrc console=null nbd.max_part=63 debug";      

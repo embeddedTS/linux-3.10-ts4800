@@ -391,11 +391,11 @@ static void __init ts48xx_timer_init(void)
 }
 
 static const char *ts48xx_dt_board_compat[] __initdata = {
-	"technologicsystems,imx51-ts48xx",
+	"embeddedts,imx51-ts48xx",
 	NULL
 };
 
-MACHINE_START(TS48XX, "Technologic Systems TS48XX")
+MACHINE_START(TS48XX, "embeddedTS TS48XX")
 	.atag_offset = 0x100,
 	.map_io = mx51_map_io,
 	.init_early = imx51_init_early,
