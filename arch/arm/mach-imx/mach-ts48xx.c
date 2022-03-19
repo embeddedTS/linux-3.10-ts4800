@@ -391,7 +391,7 @@ static void __init ts48xx_timer_init(void)
 }
 
 static const char *ts48xx_dt_board_compat[] __initdata = {
-	"embeddedts,imx51-ts48xx",
+	"technologic,imx51-ts48xx",
 	NULL
 };
 
